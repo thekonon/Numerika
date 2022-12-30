@@ -1,3 +1,3 @@
-# Odevzdání semestrální práce předmětu Numerické metody pro inženýry I.
+## Odevzdání semestrální práce předmětu Numerické metody pro inženýry I.
 
 - Autor: Martin Prokop
