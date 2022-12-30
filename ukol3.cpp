@@ -8,7 +8,7 @@ using namespace std;
 using Eigen::SparseMatrix;
 
 int main(){
-    unsigned int N = 20000;
+    unsigned int N = 10000;
     int m = (int) sqrt(N);
 
     void *Symbolic, *Numeric ;
