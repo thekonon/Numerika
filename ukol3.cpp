@@ -16,7 +16,6 @@ int main(){
 
     double x[N];
     double b[N];
-    // double b [ ] = {8., 45., -3., 3., 19.} ;
 
     SparseMatrix<double> A(N, N);
 
