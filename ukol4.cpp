@@ -10,22 +10,22 @@ const int n = 1000;
 
 int main(int argc,char **args)
 {
-  /* Inicializace */
+
   CHKERRQ( PetscInitialize( &argc , &args , (char *)0 , 0 ) );
 
-  /* Vytvoreni vektoru a nastaveni jeho celkove velikosti na 10 a hodnot na 0 */
+  //Vektor Y
   Vec y;
   VecCreateMPI(PETSC_COMM_WORLD, PETSC_DECIDE, n, &y);
   VecSet(y, 2.0);
 
-  // Vytvoreni matice o velkosti 10x10
+  // Vytvoreni matice A
   Mat A;
   MatCreate(PETSC_COMM_WORLD, &A);
   MatSetSizes(A, PETSC_DECIDE, PETSC_DECIDE, n, n);
   MatSetFromOptions(A);
   MatSetUp(A);
 
-  // Nastaveni prvku na 1, -2, 1
+  // Nastaveni prvku
   PetscInt istart, iend;
   MatGetOwnershipRange(A, &istart, &iend);
   int m = round(sqrt(n));
@@ -63,8 +63,11 @@ int main(int argc,char **args)
   KSPSetUp(solver);
 
   KSPSolve(solver, y, x);
-
+  
+  //Možnost vypsání řešení
   //VecView(x, PETSC_VIEWER_STDOUT_WORLD);
+  
+  //Uložení řešení
   PetscViewer lab;
   PetscViewerASCIIOpen(PETSC_COMM_WORLD,"ukol4.txt",&lab);
   VecView(x, lab);
